@@ -17,7 +17,7 @@
 The media share is mounted read-only. Finished memes are written to the Output path.</Description>
   <Category>MediaApp:Video Tools:Utilities</Category>
   <WebUI>http://[IP]:[PORT:8080]</WebUI>
-  <TemplateURL>https://raw.githubusercontent.com/memearr/unraid-templates/main/templates/meme-arr.xml</TemplateURL>
+  <TemplateURL>https://raw.githubusercontent.com/NetCaptive/Unraid-Community-Apps/refs/heads/main/templates/meme-arr.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/memearr/unraid-templates/main/icons/meme-arr.png</Icon>
   <ExtraSearchTerms>meme plex jellyfin subtitles gif arr</ExtraSearchTerms>
 
