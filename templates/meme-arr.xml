@@ -18,7 +18,8 @@ The media share is mounted read-only. Finished memes are written to the Output p
   <Category>MediaApp:Video Tools:Utilities</Category>
   <WebUI>http://[IP]:[PORT:8080]</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/NetCaptive/Unraid-Community-Apps/refs/heads/main/templates/meme-arr.xml</TemplateURL>
-  <Icon>https://raw.githubusercontent.com/memearr/unraid-templates/main/icons/meme-arr.png</Icon>
+  <Icon>https://raw.githubusercontent.com/memearr/meme-arr/main/docs/images/logo.png</Icon>
+  
   <ExtraSearchTerms>meme plex jellyfin subtitles gif arr</ExtraSearchTerms>
 
   <Config Name="WebUI Port" Target="8080" Default="8089" Mode="tcp" Description="Web interface port" Type="Port" Display="always" Required="true">8089</Config>
