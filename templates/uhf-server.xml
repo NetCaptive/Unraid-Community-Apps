@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>uhf-server</Name>
+  <Repository>swapplications/uhf-server:latest</Repository>
+  <Registry>https://github.com/swapplications/uhf-server-dist</Registry>
+  <Network>bridge</Network>
+  <ExtraNetworks/>
+  <MyIP/>
+  <MyMAC/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/swapplications/uhf-server-dist</Support>
+  <Project>https://getuhf.com/</Project>
+  <ReadMe/>
+  <Overview>UHF Server is the DVR backend for the "UHF - Love Your IPTV" app. It records live IPTV streams to HLS, serves a built-in web app and API on a single port, and can optionally run Comskip commercial detection on finished recordings so ad breaks can be skipped.&#13;
+&#13;
+Connect from the UHF app under Settings &amp;gt; DVR server using your Unraid IP and port, or open the WebUI in a browser.&#13;
+&#13;
+SECURITY: If no password is set, anyone on your network can use the server. Set a password if the server is reachable beyond a trusted LAN.&#13;
+&#13;
+Set the Recordings path to a location on an array/pool share with plenty of free space. Keep the Database path on appdata (cache/SSD preferred).</Overview>
+  <Category>MediaServer:Video Tools:</Category>
+  <WebUI>http://[IP]:[PORT:8000]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/NetCaptive/Unraid-Community-Apps/refs/heads/main/templates/uhf-server.xml</TemplateURL>
+  <Icon>https://cdn.jsdelivr.net/gh/selfhst/icons@main/webp/uhf.webp</Icon>
+  <ExtraParams>--health-cmd='curl -f http://localhost:8000/server/stats' --health-interval=30s --health-timeout=5s --health-retries=3</ExtraParams>
+  <PostArgs>uhf-server --port 8000 --recordings-dir /recordings</PostArgs>
+  <CPUset/>
+  <Memory/>
+  <DateInstalled/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="WebUI Port" Target="8000" Default="8000" Mode="tcp" Description="Port for the web app. The container always listens on 8000; change the host port here if 8000 is already in use." Type="Port" Display="always" Required="true" Mask="false">8800</Config>
+  <Config Name="Recordings" Target="/recordings" Default="/mnt/user/media/uhf-server/recordings" Mode="rw" Description="Folder where recordings are stored (one folder per recording). Point this at a share with plenty of free space." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/data/media/dvr/UHF/</Config>
+  <Config Name="Database" Target="/db" Default="/mnt/user/appdata/uhf-server" Mode="rw" Description="Stores the database (schedules, recording states, web sessions). Keep this on persistent storage." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/uhf-server</Config>
+  <Config Name="Password" Target="SERVER_PASSWORD" Default="" Mode="" Description="Optional password for the apps and web app. Leave empty for no password protection. Changing it ends existing web sessions." Type="Variable" Display="always" Required="false" Mask="true"></Config>
+  <Config Name="Commercial Detection" Target="ENABLE_COMMERCIAL_DETECTION" Default="true|false" Mode="" Description="Run Comskip on finished recordings so ad breaks can be skipped. Uses CPU and takes minutes per recording." Type="Variable" Display="always" Required="false" Mask="false">true</Config>
+  <Config Name="API Port (internal)" Target="API_PORT" Default="8000" Mode="" Description="Port the server listens on inside the container. Must match the container port of the port mapping above; leave at 8000." Type="Variable" Display="advanced" Required="true" Mask="false">8000</Config>
+  <Config Name="Single File Recordings" Target="SINGLE_FILE_RECORDINGS" Default="false|true" Mode="" Description="Merge segments into a single index.ts file after recording. Temporarily needs twice the recording's disk space." Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
+  <Config Name="Log Level" Target="LOG_LEVEL" Default="INFO|DEBUG|WARNING|ERROR|CRITICAL" Mode="" Description="Logging verbosity." Type="Variable" Display="advanced" Required="false" Mask="false">INFO</Config>
+  <TailscaleStateDir/>
+</Container>
