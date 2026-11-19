@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>teamarr</Name>
+  <Repository>ghcr.io/pharaoh-labs/teamarr:latest</Repository>
+  <Registry>https://github.com/Pharaoh-Labs/teamarr/pkgs/container/teamarr</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/Pharaoh-Labs/teamarr/issues</Support>
+  <Project>https://github.com/Pharaoh-Labs/teamarr</Project>
+  <Overview>Generates sports EPG data and manages channels for Dispatcharr. Created by Pharaoh Labs; this template is community-maintained.</Overview>
+  <Description>Teamarr builds sports guide (XMLTV) data and works with Dispatcharr to create and manage channels.&#xD;
+&#xD;
+**Setup:** open the WebUI, follow the Getting Started guide on the dashboard to connect Dispatcharr, create templates, and add teams or event groups.&#xD;
+&#xD;
+Point Dispatcharr's EPG source at: http://[your-unraid-ip]:9195/api/v1/epg/xmltv&#xD;
+&#xD;
+**Important:** the Data path holds teamarr.db, which contains all your configuration. Do not delete it.</Description>
+  <Category>MediaApp:Other Tools:Utilities</Category>
+  <WebUI>http://[IP]:[PORT:9195]</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/NetCaptive/Unraid-Community-Apps/refs/heads/main/templates/teamarr.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/Pharaoh-Labs/teamarr/main/docs/assets/images/teamarr_electric_blue.png</Icon>
+  <ExtraSearchTerms>sports epg xmltv dispatcharr iptv</ExtraSearchTerms>
+
+  <Config Name="WebUI Port" Target="9195" Default="9195" Mode="tcp" Description="Web interface and EPG endpoint port" Type="Port" Display="always" Required="true">9195</Config>
+  <Config Name="Data" Target="/app/data" Default="/mnt/user/appdata/teamarr" Mode="rw" Description="Database, settings and logs. Never delete teamarr.db." Type="Path" Display="always" Required="true">/mnt/user/appdata/teamarr</Config>
+  <Config Name="Timezone" Target="TZ" Default="America/New_York" Mode="" Description="Your local timezone, e.g. America/Chicago" Type="Variable" Display="always" Required="true">America/New_York</Config>
+</Container>
